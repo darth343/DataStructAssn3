@@ -19,17 +19,26 @@
 //*******************************************************************//
 LinkedList::LinkedList()
 {
-
+	head = nullptr;
 }
 
 LinkedList::~LinkedList()
 {
-
 }
 
 void LinkedList::push_front(int data)
 {
-
+	if (!head)
+	{
+		head = new Node;
+		head->next = nullptr;
+		head->data = data;
+	}
+	else{
+		Node * temp = new Node(data);
+		temp->next = head;
+		head = temp;
+	}
 }
 
 void LinkedList::push_back(int data)
@@ -59,7 +68,14 @@ int LinkedList::pop_at(int pos)
 
 size_t LinkedList::size()
 {
-    return 0;
+	int size = 0;
+	Node * curr = head;
+	while (curr)
+	{
+		size++;
+		curr = curr->next;
+	}
+	return size;
 }
 
 //*******************************************************************//
